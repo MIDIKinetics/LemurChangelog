@@ -22,12 +22,10 @@ Nov 4, 2024
 
 Lemur 5.6 implements important text functions, completing the essential infrastructure for full text processing in LemurLang. 
 
-- **`stringtoarray(s)`** 
+- `stringtoarray(s)`
 
     Returns an array of ANSI-encoded characters for a given string or 0 if the conversion fails. 
     
-
-
     ```
     stringtoarray('Hello'); // {72, 101, 108, 108, 111}
     stringtoarray(MyButton); // 0
@@ -49,7 +47,7 @@ Lemur 5.6 implements important text functions, completing the essential infrastr
     
     For a reference of ANSI-encoded characters, see [this link](https://www.ascii-code.com). 
 
-- **`stringtonumber(s)`**
+- `stringtonumber(s)`
 
     Returns a string converted to a number, or the empty string if conversion failed.
     
