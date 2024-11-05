@@ -125,7 +125,9 @@ Lemur 5.6 implements new convenience methods for sending different MIDI messages
 - Fixed the Lemur Editor window becoming unreachable on multi-monitor setups.
 
 
-### Downloadable Lemur Modules
+## Downloadable Lemur Modules
+
+---
 
 ### MKConsole
 
