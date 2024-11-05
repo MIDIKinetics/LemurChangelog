@@ -8,7 +8,7 @@ Nov 4, 2024
 
 #### Undo/Redo
 
-The most requested feature! You can now undo changes in the script editor. Each script maintains its own separate undo history. This means undoing changes in one script won’t affect another. Also, changes made in the UI and script editor are tracked separately, so undo actions remain specific to where they occurred.
+The most requested feature! You can now undo changes in the script editor. Each script maintains its own separate undo history. This ensures that undoing changes in one script won’t affect another. Additionally, undo actions are tracked separately for UI and script editor changes, ensuring undo actions remain specific to where they occurred.
 
 #### Toggle Comments Keyboard Shortcut
 
@@ -17,7 +17,7 @@ Use  `CMD/CTL + \` to toggle code comments on/off. Works on both single and mult
 
 #### Tab Indent Keyboard Shortcut
 
-Use `CMD/CTL [ or ]` to tab indent code. Works on both single and multiple lines.
+Use `CMD/CTL [ or ]` to tab-indent code. Works on both single and multiple lines.
 
 
 ### Improvements to Lemur Editor
@@ -34,6 +34,8 @@ Use `CMD/CTL [ or ]` to tab indent code. Works on both single and multiple lines
 
 #### String Functions
 
+Lemur 5.6 implements important text functions, completing the essential infrastructure for full text processing in LemurLang. 
+
 - `stringtoarray(s)`
 
 Returns an array of ANSI-encoded characters for a given string or 0 if the conversion fails.
@@ -43,7 +45,6 @@ stringtoarray('Hello'); // {72, 101, 108, 108, 111}
 stringtoarray(MyButton); // 0
 ```
 
-This completes the essential infrastructure for full text processing in LemurLang. 
 You can now easily perform tasks like sending text as SysEx messages:
 
 ```
@@ -120,15 +121,69 @@ Lemur 5.6 implements much needed convenience methods for sending different MIDI 
 
 ### Bug Fixes
 
-- Fixed Image Widget resizing unexpectedly when Resize Mode set to Lock Ratio
-- Fixed Lemur Editor window becoming unreachable in setups with multiple monitors
+- Fixed an issue with the Image Widget resizing unexpectedly when Resize Mode is set to Lock Ratio.
+- Fixed the Lemur Editor window becoming unreachable on multi-monitor setups.
 
 
 ### Downloadable Lemur Modules
 
 ## MKConsole
 
-A console for logging debug messages. 
+A text console for logging debug messages.
+
+![MKConsole Screenshot](images/MKConsole-Screenshot.png)
+
+Features:
+
+- Auto-resizes.
+- Double-tap to clear, or clear programmatically. 
+- Customize colors and font sizes.
+
+[Download Here](https://github.com/MIDIKinetics/MKConsole)
+
+
+## MKPiano
+
+A fully customizable, 128 key piano widget.
+
+![MKPiano Screenshot](images/MKPiano-Screenshot.png)
+
+Features:
+
+- Auto-resizes 
+- Respond to key presses and releases.
+- The higher you tap on the key the greater the velocity.
+- Adjustable number of visible octaves.
+- Configurable scrolling behavior (octave or page-based).
+- Option to show/hide/reposition scroll buttons.
+- Disable scrolling animations.
+- Add custom labels to each key and control text color.
+- Customize key colors.
+- Enable full programmatic control by disabling key presses.
+
+[Download Here](https://github.com/MIDIKinetics/MKPiano)
+
+## MKQwerty
+
+Add a QWERTY keyboard to your Lemur project to enable in-app text editing.
+
+![MKQwerty Screenshot](images/MKQwerty-Screenshot.png)
+
+Features:
+
+- Auto-resizes.
+- Choose between alphanumeric or numeric output.
+- Limit input to integers, floats, or positive numbers.
+- Show/Hide Return key.
+- Show/Hide Dismiss key.
+- Show/Hide output display.
+- Monitor output and keystrokes.
+- Set input programmatically.
+- Customizable colors and text size
+
+
+[Download Here](https://github.com/MIDIKinetics/MKQwerty)
+
 
 
 
