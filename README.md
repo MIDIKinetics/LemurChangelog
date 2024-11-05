@@ -110,7 +110,7 @@ Lemur 5.6 implements new convenience methods for sending different MIDI messages
     Sends a MIDI sysex message out Lemur target `target` with the supplied `dataBytes`. 
     
     Note:
-    - You do not need to specify the sysex-start or sysex-end data bytes. These will be added to the message before is sent if they are already added.
+    - You do not need to specify the sysex-start or sysex-end data bytes. These will be added to the message before it is sent if they are not already added.
     - Data bytes are currently limited to 128 values.
 
     Example:
