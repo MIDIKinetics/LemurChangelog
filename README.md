@@ -6,16 +6,16 @@ Nov 4, 2024
 
 ### Script Editor Improvements
 
-#### Undo/Redo
+- Undo/Redo
 
 The most requested feature! You can now undo changes in the script editor. Each script maintains its own separate undo history. This ensures that undoing changes in one script won’t affect another. Additionally, undo actions are tracked separately for UI and script editor changes, ensuring undo actions remain specific to where they occurred.
 
-#### Toggle Comments Keyboard Shortcut
+- Toggle Comments Keyboard Shortcut
 
 Use  `CMD/CTL + \` to toggle code comments on/off. Works on both single and multiple lines.
 
 
-#### Tab Indent Keyboard Shortcut
+- Tab Indent Keyboard Shortcut
 
 Use `CMD/CTL [ or ]` to tab-indent code. Works on both single and multiple lines.
 
@@ -127,7 +127,7 @@ Lemur 5.6 implements much needed convenience methods for sending different MIDI 
 
 ### Downloadable Lemur Modules
 
-## MKConsole
+### MKConsole
 
 A text console for logging debug messages.
 
@@ -142,7 +142,7 @@ Features:
 [Download Here](https://github.com/MIDIKinetics/MKConsole)
 
 
-## MKPiano
+### MKPiano
 
 A fully customizable, 128 key piano widget.
 
@@ -163,7 +163,7 @@ Features:
 
 [Download Here](https://github.com/MIDIKinetics/MKPiano)
 
-## MKQwerty
+### MKQwerty
 
 Add a QWERTY keyboard to your Lemur project to enable in-app text editing.
 
@@ -183,7 +183,4 @@ Features:
 
 
 [Download Here](https://github.com/MIDIKinetics/MKQwerty)
-
-
-
 
