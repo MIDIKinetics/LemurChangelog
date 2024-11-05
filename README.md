@@ -127,8 +127,6 @@ Lemur 5.6 implements new convenience methods for sending different MIDI messages
 
 ## Downloadable Lemur Modules
 
----
-
 ### MKConsole
 
 A text console for logging debug messages.
