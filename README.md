@@ -13,12 +13,7 @@ Nov 4, 2024
 
 ## Improvements to Lemur Editor
 
-- Updated Lemur default project sizes to reflect modern iOS devices
-
-	- iPad 9.7"
-	- iPad 10.2"
-	- iPad 10.9"
-	- iPad 12.9"
+- **Updated Lemur default project sizes to reflect modern iOS devices:** iPad 9.7", iPad 10.2", iPad 10.9", iPad 12.9"
 
 
 ## Additions to LemurLang
