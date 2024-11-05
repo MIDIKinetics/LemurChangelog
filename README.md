@@ -4,7 +4,7 @@
 
 Nov 4, 2024
 
-### Script Editor Improvements
+## Script Editor Improvements
 
 - Undo/Redo
 
@@ -30,7 +30,7 @@ Use the keyboard shorcut `CMD/CTL [ or ]` to tab-indent code. Works on both sing
 	- iPad 12.9"
 
 
-### Additions to LemurLang
+## Additions to LemurLang
 
 #### String Functions
 
@@ -119,7 +119,7 @@ Lemur 5.6 implements new convenience methods for sending different MIDI messages
     sysexout(0, {0, 0, 11, 12});
     ```
 
-### Bug Fixes
+## Bug Fixes
 
 - Fixed an issue with the Image Widget resizing unexpectedly when Resize Mode is set to Lock Ratio.
 - Fixed the Lemur Editor window becoming unreachable on multi-monitor setups.
