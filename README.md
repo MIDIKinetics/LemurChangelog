@@ -7,8 +7,8 @@ Nov 4, 2024
 ## Script Editor Improvements
 
 - **Undo/Redo:** The most requested feature! You can now undo changes in the script editor. Each script maintains its own separate undo history. This ensures that undoing changes in one script won’t affect another. Additionally, undo actions are tracked separately for UI and script editor changes, ensuring undo actions remain specific to where they occurred.
-- **Comment/Uncomment Selection: ** Use the keyboard shortcut  `CMD/CTL + \` to toggle code comments on/off. Works on both single and multiple lines.
-- **Tab-Indent Selection: ** Use the keyboard shorcut `CMD/CTL [ or ]` to tab-indent code. Works on both single and multiple lines.
+- **Comment/Uncomment Selection:** Use the keyboard shortcut  `CMD/CTL + \` to toggle code comments on/off. Works on both single and multiple lines.
+- **Tab-Indent Selection:** Use the keyboard shorcut `CMD/CTL [ or ]` to tab-indent code. Works on both single and multiple lines.
 
 
 ## Improvements to Lemur Editor
