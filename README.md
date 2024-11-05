@@ -72,7 +72,7 @@ stringtonumber('hello'); // ''
 
 #### MIDI Related Functions
 
-Lemur 5.6 implements much needed convenience methods for sending different MIDI messages, which previously required manually sending them as raw MIDI bytes.
+Lemur 5.6 implements new convenience methods for sending different MIDI messages, which previously required manually sending them as raw MIDI bytes.
 
     
 - `programchangeout(target, pgm, chan)`
