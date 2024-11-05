@@ -20,7 +20,7 @@ Use the keyboard shortcut  `CMD/CTL + \` to toggle code comments on/off. Works o
 Use the keyboard shorcut `CMD/CTL [ or ]` to tab-indent code. Works on both single and multiple lines.
 
 
-### Improvements to Lemur Editor
+## Improvements to Lemur Editor
 
 - Updated Lemur default project sizes to reflect modern iOS devices
 
