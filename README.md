@@ -1,6 +1,6 @@
 # Lemur Changelog
 
-## Lemur 5.6
+## Lemur 5.7
 
 Nov 4, 2024
 
@@ -13,14 +13,14 @@ Nov 4, 2024
 
 ## Improvements to Lemur Editor
 
-- **Updated Lemur default project sizes to reflect modern iOS devices:** iPad 9.7", iPad 10.2", iPad 10.9", iPad 12.9"
+- **Updated Lemur default project sizes to reflect modern iOS devices:** iPad 9.7", iPad 10.2", iPad 10.9", iPad 12.9", iPhone 12, iPhone 14 Pro Max
 
 
 ## Additions to LemurLang
 
 #### String Functions
 
-Lemur 5.6 implements important text functions, completing the essential infrastructure for full text processing in LemurLang. 
+Lemur 5.7 implements important text functions, completing the essential infrastructure for full text processing in LemurLang. 
 
 - `stringtoarray(s)`
 
@@ -58,7 +58,7 @@ Lemur 5.6 implements important text functions, completing the essential infrastr
 
 #### MIDI Related Functions
 
-Lemur 5.6 implements new convenience methods for sending different MIDI messages, which previously required manually sending them as raw MIDI bytes.
+Lemur 5.7 implements new convenience methods for sending different MIDI messages, which previously required manually sending them as raw MIDI bytes.
 
     
 - `programchangeout(target, pgm, chan)`
