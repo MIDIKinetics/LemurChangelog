@@ -278,7 +278,7 @@ This allows fixed-value mappings, such as Program Change and SysEx, to send the 
 
 Lemur 5.8 contains many bug fixes and performance improvements under the hood.
 
-
+<br>
 
 ## Lemur 5.7
 
