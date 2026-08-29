@@ -1,5 +1,285 @@
 # Lemur Changelog
 
+## Lemur 5.8
+
+August 30, 2026
+
+### Improvements to the Lemur Editor
+
+#### Zoomable Canvas
+
+The project canvas can now be zoomed in and out or scaled to fit the available space. 
+
+  ![The project canvas at different zoom levels](/images/Lemur-5.8-Zoomable-Canvas.gif)
+
+> Use `Cmd/Ctrl` + `+` and `Cmd/Ctrl` + `-` to zoom, or `Cmd/Ctrl` + `0` to zoom to fit.
+
+#### New Code Editor
+
+Lemur 5.8 includes an all-new dark-mode code editor with proper support for line wrapping, multi-column selections, and multiple font sizes.
+
+  ![The new Lemur code editor](/images/Lemur-5.8-Code-Editor.gif)
+
+> Use `Cmd/Ctrl` + `+` and `Cmd/Ctrl` + `-` to change the font size.
+
+#### New Compiler Error Panel
+
+A new Error Panel displays a list of all scripts and expressions that currently report errors, avoiding the need to search through the entire project—or worse, never realizing that errors were present at all.
+
+  ![The Compiler Error Inspector](/images/Lemur-5.8-Error-List.png)
+  
+#### Editor Layout Improvements
+
+Lemur 5.8 includes a broad set of visual and layout improvements throughout the Editor, with more consistent alignment, spacing, and behavior. A number of panels have also been redesigned to improve their individual layouts. Some of the more noticeable improvements include:
+
+- All inspector panels are now scrollable, allowing you to see all their contents without constantly requiring you to resize or close unused dock tabs. 
+- Resizing the Lemur Editor now correctly causes the project canvas to grow, rather than the sidebar panels, avoiding the need to resize the sidebars every time you resize the window.
+
+
+#### Modernized Text Rendering Engine
+
+Lemur's text rendering pipeline has been rewritten from the ground up to provide modern, crisp, consistent, high-performance text across font sizes, display sizes, and operating systems.
+
+#### Rename Scripts and Expressions in Place
+
+Scripts and expressions can now be renamed directly, without having to go through the tedious process of copying their contents, deleting them, and recreating them under a new name. One of our most requested features!
+
+  > Right-click the script or expression in the Project Navigator and select **Rename**.
+
+#### Improved Multi-Monitor and Display-Scale Support
+
+The Lemur Editor now handles multi-monitor systems with mixed resolutions, layouts, and fractional display scales. This resolves one of the Editor's oldest bugs, which could leave the Editor unresponsive or outside the visible display area.
+
+<br>
+
+### Additions to the Lemur Scripting Language
+
+#### Dynamic Script Execution: `invoke`
+
+The new `invoke` family of functions allows you to execute a script simply by mentioning its name as a string:
+
+- **`invoke(object, name)`**
+
+  Executes the script `name` on `object` and returns its result. Silently fails and returns 0 if the script doesn't exist.
+
+   ```lemurscript
+   // Example:
+   decl result = invoke(object, 'sendMIDI');
+   ```	
+
+
+The invoke family of functions also provides variations that allow arguments (up to 8):
+- **`invoke1(object, name, arg1);`**
+- **`invoke2(object, name, arg1, arg2);`**
+- **`invoke3(object, name, arg1, arg2, arg3);`**
+- **`invoke4(object, name, arg1, arg2, arg3, arg4);`**
+- **`invoke5(object, name, arg1, arg2, arg3, arg4, arg5);`**
+- **`invoke6(object, name, arg1, arg2, arg3, arg4, arg5, arg6);`**
+- **`invoke7(object, name, arg1, arg2, arg3, arg4, arg5, arg6, arg7);`**
+- **`invoke8(object, name, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8);`**
+
+
+    ```lemurscript
+    // Example
+    invoke2(multiball, 'sendMIDI', 1, 11);
+    ```
+
+---
+#### Completing Lemur's Support for Dynamic Object Access
+
+The new `invoke` family fills a longstanding gap in how Lemur works with object references.
+
+Typically, Lemur can only access an expression or execute a script if it has a direct, named reference to an object. However, once the object is stored in a variable, its object-specific members can no longer be accessed directly:
+
+```lemurscript
+Fader.x = 0.5; // ✅ OK
+Fader.reset(0.5); // ✅ OK
+
+decl object = Fader; // Store a reference to Fader
+object.x = 0.5; // ❌ Doesn't compile: `object` has no member named 'x'
+object.reset(0.5); // ❌ Doesn't compile: `object` has no script named `reset`
+```
+
+To get around this, Lemur has always supported dynamic expression access through the functions `getexpression` and `setexpression`. However, there was no equivalent way to execute a script:
+
+```lemurscript
+decl object = Fader;
+decl x = getexpression(object, 'x'); // ✅ OK
+setexpression(object, 'x', 0.5); // ✅ OK
+object.reset(0.5); // ❌ Doesn't compile: `object` has no script named `reset`
+```
+
+The `invoke` family closes this gap by adding dynamic script execution:
+
+```lemurscript
+decl object = Fader;
+invoke1(object, 'reset', 0.5); // ✅ OK
+```
+
+Together, these functions enable a dynamic programming style similar to [**Duck Typing**](https://en.wikipedia.org/wiki/Duck_typing). As long as an object provides an expression or script with the requested name, your code can use it without knowing the object’s concrete type.
+
+#### New Patterns
+
+This dynamic object access also enables programming patterns that were previously difficult to express in Lemur, such as:
+
+#### 1. Dynamic Dispatch
+
+Objects of different types can implement a script with the same name and be called uniformly: 
+
+```lemurscript
+decl objects = {Fader, Switches, Pads, MultiBall};
+decl i;
+for (i = 0; i < sizeof(objects); i++) {
+  invoke(objects[i], 'sendMIDI');
+}
+```
+
+#### 2. Completion Handlers
+
+Pass a script to be executed by another script:
+
+```lemurscript
+Pads {
+  onPadsPressed() {
+    // Pass the completion object and script name to the Knob.
+    Knob.spin(Text, 'display');
+  }
+}
+
+Knob {
+  spin(completionObject, completionScript) {
+    x = rand();
+    // Execute the supplied script
+    invoke1(completionObject, completionScript, 'Knob = ' + x);
+  }
+}
+
+Text {
+  display(value) {
+    setattribute(getobject(), 'content', value);
+  }
+}
+```
+
+#### 3. Strategy Pattern
+
+Swap out behavior at runtime by storing the name of the script to be executed later:
+
+```lemurscript
+Pads {
+  script=
+  onPadsPressed() { invoke(getobject(), script); }
+  sendNote() { noteout(0, 1, 127, 1); }
+  sendControlChange() { ctlout(0, 1, 127, 1); }
+  sendProgramChange() { programchangeout(0, 1, 1); }
+}
+
+// Load the button press with different behaviors
+Pads.script = 'sendNote';
+Pads.script = 'sendControlChange';
+Pads.script = 'sendProgramChange';
+```
+
+#### 4. State Pattern
+
+Each state implements the same set of event handlers. The parent object delegates events to the currently active state:
+
+```
+Piano {
+    IdleState {
+        buttonPressed() { }
+        buttonReleased() { }
+        enter() { }
+    }
+
+    ActiveState {
+        buttonPressed() { noteOn(); }
+        buttonReleased() { noteOff(); }
+        enter() {
+            redrawKeys();
+        }
+    }
+
+    EditingState {
+        buttonPressed() { showEditor(); }
+        buttonReleased() { }
+        enter() {
+            redrawKeys();
+        }
+    }
+
+    state = IdleState;
+
+    buttonPressed() {
+        invoke(state, 'buttonPressed');
+    }
+
+    setState(newState) {
+        state = newState;
+        invoke(state, 'enter');
+    }
+}
+```
+
+
+#### 5. Command Pattern
+
+Create a queue of named actions and execute them in order:
+
+```lemurscript
+decl commands = {'send_cc', 'send_cc', 'send_note', 'send_note'};
+decl i;
+for (i = 0; i < sizeof(scripts); i++) {
+    invoke(object, commands[i]);
+}
+```
+
+These are only a few examples of the patterns enabled by dynamic script execution.
+
+<br>
+
+### Changes to Object Behavior
+
+#### Locked Containers
+
+Locking a container no longer prevents it from being resized or receiving touch input.
+
+Fine out more here, in this discussion: https://community.midikinetics.com/viewtopic.php?t=6176&sid=b78ccb1fd672994e73d650ac0f8fcd9a
+
+##### Thinking about distributing a Lemur module?
+
+Containers provide a practical way to distribute a Lemur module while hiding its internal implementation details.
+
+Place the module's internal objects inside a child container, then lock the parent container. The child container is hidden from the Project Navigator, while scripts and expressions on the parent remain visible.
+
+The parent container exposes the module's **public API**, while the hidden child container contains its **private implementation details**.
+
+![Locked Containers](/images/Lemur-5.8-Locked-Containers.png)
+
+
+#### MIDI Mapping Trigger Rules
+
+MIDI mapping trigger conditions can now be evaluated using either the source expression or the scaled MIDI value. Scaling still determines the value sent; the trigger rule determines which value is observed for changes.
+
+This allows fixed-value mappings, such as Program Change and SysEx, to send the same mapped value each time the source expression changes, even when the generated MIDI value remains constant.
+
+> Select **Project** and open **Mapping > MIDI** to choose **Source Expression** or **Scaled MIDI Value**. New projects default to **Source Expression**. Existing projects retain **Scaled MIDI Value** for compatibility unless the setting is changed.
+
+### Performance and Stability
+
+- **Network Stability:** Device discovery and connection handling are more reliable when using multiple USB and Wi-Fi devices at the same time, especially when Lemur is running on several mobile devices.
+
+- **Frame-Rate Stability:** An issue that could produce unpredictable Editor frame rates has been resolved. The Lemur Editor and Lemur app now maintain a consistent 60 FPS.
+
+- **Runtime Performance and Stability:** Work throughout the Lemur Editor and Lemur app reduces CPU, GPU, and battery use. Lemur 5.8 also includes numerous fixes to general responsiveness and runtime stability.
+
+
+### And many more
+
+Lemur 5.8 contains many bug fixes and performance improvements under the hood.
+
+
+
 ## Lemur 5.7
 
 Nov 4, 2024
