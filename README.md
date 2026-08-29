@@ -244,7 +244,7 @@ These are only a few examples of the patterns enabled by dynamic script executio
 
 Locking a container no longer prevents it from being resized or receiving touch input.
 
-Fine out more here, in this discussion: https://community.midikinetics.com/viewtopic.php?t=6176&sid=b78ccb1fd672994e73d650ac0f8fcd9a
+Find out more here, in this discussion: https://community.midikinetics.com/viewtopic.php?t=6176&sid=b78ccb1fd672994e73d650ac0f8fcd9a
 
 ##### Thinking about distributing a Lemur module?
 
