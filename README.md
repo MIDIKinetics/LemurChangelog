@@ -1,8 +1,17 @@
 # Lemur Changelog
 
-## Lemur 5.8
+## Lemur 5.8.1 (iOS)
 
 August 30, 2026
+
+- Fixed a crash on launch affecting devices with A9 and A9X processors
+- Added support for transferring Lemur projects using the iOS Share Sheet
+
+> Long press one of your projects or swipe left and press "Share"
+
+## Lemur 5.8
+
+August 29, 2026
 
 ### Improvements to the Lemur Editor
 
