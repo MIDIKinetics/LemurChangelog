@@ -289,6 +289,7 @@ August 30, 2026
 
 > Long press one of your projects or swipe left and press "Share"
 
+<br>
 
 ## Lemur 5.7
 
