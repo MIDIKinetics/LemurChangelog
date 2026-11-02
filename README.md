@@ -1,5 +1,86 @@
 # Lemur Changelog
 
+## Lemur 5.9
+
+Nov 2, 2026
+
+### New Feature: LemurDocs
+
+LemurDocs lets you add plain text documentation directly to a project or an individual object. Instructions can now travel with your modules, without needing a separate PDF.
+
+![LemurDocs](/images/Lemur-5.9-LemurDocs-Screenshot.png)
+
+> New projects start with a basic README. You can customize its template or turn off automatic README creation in the Projects tab of the Lemur Editor’s settings.
+
+### New Feature: Automatic Software Updates
+
+The Lemur Editor and Lemur Daemon now notify you when an update is available and let you download and install it from within the application.
+
+![In-App Lemur Updates](/images/Lemur-5.9-Automatic-Updates.png)
+
+> You can also check for updates manually in Settings.
+
+### New Feature: News Feed
+
+Never miss an important message from MIDI Kinetics. Lemur and the Lemur Editor can now show news from MIDI Kinetics directly in the app.
+
+![In-App MIDI Kinetics News](/images/Lemur-5.9-In-App-News.png)
+
+### Improvements to the Lemur Editor
+
+#### Resize Objects Together
+
+Lemur 5.9 makes it easier to adjust your project layouts by letting you scale multiple objects together.
+
+ - Hold **Shift** while resizing a container to scale its contents along with it.
+ - Hold **Shift** while resizing a selection of multiple objects to scale them together.
+
+![Lemur Multi-Select Resizing](/images/Lemur-5.9-Multi-Select-Resize.gif)
+
+#### A Refreshed Look
+
+The desktop software now has a rounded appearance to match the aesthetics of modern operating systems.
+
+#### Window Resizing
+
+Resizable desktop windows can now be resized from any edge.
+
+### Changes to Object Behavior
+
+#### Menu Labels
+
+The Menu widget can now display its name as a label above the selected item.
+
+![Lemur Menu Title Label](/images/Lemur-5.9-Menu-With-Label.png)
+
+#### Knob and RingArea Sizing
+
+Knob and RingArea objects no longer require square dimensions, making them easier to fit into your layouts. They now keep the dimensions you assign them and draw the circular control centered inside their frame.
+
+### Bug Fixes
+
+- Fixed a bug that ignored the preference to launch the Lemur Daemon when the computer starts.
+- Long OSC host names are no longer truncated.
+- Zooming the canvas no longer highlights an object that is not under the pointer.
+- Fixed stray lines appearing on windows drawn over a zoomed canvas.
+- Fixed the object inspector’s Y field resetting entered values to zero.
+- Objects no longer shift position when resized past their minimum size using the top or left handle.
+- Fixed **Shift + mouse wheel** horizontal scrolling on Windows.
+- **Shift + Backspace** now deletes text correctly.
+- Labels and buttons configured to use bold text now render correctly.
+- Switches, faders, and tab bars no longer show stray lines at fractional display scales.
+- Single-segment Canvas strokes now draw round caps at both ends.
+
+### Minimum System Requirements
+
+Lemur Editor and Lemur Daemon now require **macOS 13 (Ventura) or later**. The Lemur app now requires **iOS 13.6 or later**.
+
+### Important
+
+Starting in April 2027, Apple will require all new iOS app submissions and updates to target iOS 15 or later. See [Apple’s submission requirements](https://developer.apple.com/app-store/submitting/).
+
+If your device cannot run iOS 15 or later, please start planning for an upgrade if you wish to continue receiving updates for Lemur.
+
 ## Lemur 5.8
 
 August 29, 2026
